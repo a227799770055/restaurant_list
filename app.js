@@ -29,7 +29,10 @@ app.get('/search', (req, res) => {
   rest = restaurant.results.filter(item => {
     return item.name.toLowerCase().includes(keywords.toLowerCase())
   })
-  console.log(rest)
+  rest = restaurant.results.filter(item => {
+    return item.category.toLowerCase().includes(keywords.toLowerCase())
+  })
+
   res.render('index', { rest: rest, keyword: keywords })
 })
 
