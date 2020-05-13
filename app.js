@@ -31,11 +31,19 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants/:rest_id', (req, res) => {
-  console.log(req.params.rest_id)
-  rest = restaurant.results.find(item => {
-    return item.id == req.params.rest_id
-  })
-  res.render('show', { rest: rest })
+  id = req.params.rest_id
+  restaurant.findById(id)
+    .lean()
+    .then(rest => res.render('show', { rest }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:rest_id/delete', (req, res) => {
+  id = req.params.rest_id
+  restaurant.findById(id)
+    .then(rest => rest.remove())
+    .then(res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 app.get('/search', (req, res) => {
