@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const restaurant = require('./restaurant.json')
+const restaurant = require('./models/restaurant')
 const mongoose = require('mongoose')
 
 // hadlebsrs engine
@@ -23,7 +23,11 @@ db.once('open', () => {
 
 // setting routing
 app.get('/', (req, res) => {
-  res.render('index', { rest: restaurant.results })
+  restaurant.find()
+    .lean()
+    .then(rest => res.render('index', { rest }))
+    .catch(error => console.log(error))
+
 })
 
 app.get('/restaurants/:rest_id', (req, res) => {
