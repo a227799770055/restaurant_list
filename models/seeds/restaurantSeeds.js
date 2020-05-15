@@ -13,7 +13,6 @@ db.once('open', () => {
   console.log('mongodb connected!')
   for (const element of restaurantJson.results) {
     restaruant.create({
-      id: element.id,
       name: element.name,
       name_en: element.name_en,
       category: element.category,
@@ -28,4 +27,3 @@ db.once('open', () => {
 
 })
 
-console.log(restaurantJson.results)

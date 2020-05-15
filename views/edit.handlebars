@@ -1,0 +1,82 @@
+<h1 class="mb-1 restaurant-show-title">{{rest.name}}</h1>
+<div class="container">
+  <form action="./" method="POST">
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">中文店名</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.name}} aria-label="Username"
+          aria-describedby="basic-addon1" name="name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">英文店名</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.name_en}} aria-label="Username"
+          aria-describedby="basic-addon1" name="name_en">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">餐廳類型</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.category}} aria-label="Username"
+          aria-describedby="basic-addon1" name="category">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">餐廳圖片網址</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.image}} aria-label="Username"
+          aria-describedby="basic-addon1" name="image">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">餐廳地址</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.location}} aria-label="Username"
+          aria-describedby="basic-addon1" name="location">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">電話</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.phone}} aria-label="Username"
+          aria-describedby="basic-addon1" name="phone">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">評分</span>
+        </div>
+        <input type="text" class="form-control" placeholder={{rest.rating}} aria-label="Username"
+          aria-describedby="basic-addon1" name="rating">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">描述</span>
+        </div>
+        <textarea class="form-control" aria-label="With textarea" name="description"
+          placeholder={{rest.description}}></textarea>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-2 align-self-end">
+        <button class="btn btn-primary" type="summit" style="height: 4rem; width:7rem">SAVE</button>
+      </div>
+    </div>
+  </form>
+</div>
