@@ -56,16 +56,46 @@ app.get('/restaurants/:rest_id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.post('/restaurants/:rest_id/edit', (req, res) => {
+  id = req.params.rest_id
+  const body = req.body
+  restaurant.findById(id)
+    .then(rest => {
+      for (item in body) {
+        if (body[item] != "") {
+          rest[item] = body[item]
+        }
+      } return rest.save()
+    })
+    .then(res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 app.get('/search', (req, res) => {
   keywords = req.query.keyword
-  rest = restaurant.results.filter(item => {
-    return item.name.toLowerCase().includes(keywords.toLowerCase())
-  })
-  rest = restaurant.results.filter(item => {
-    return item.category.toLowerCase().includes(keywords.toLowerCase())
-  })
-  res.render('index', { rest: rest, keyword: keywords })
+  dummy = []
+  restaurant.find()
+    .lean()
+    .then(rest => {
+      for (item of rest) {
+        console.log(item.name)
+        if (item.name.toLowerCase().includes(keywords.toLowerCase())) {
+          dummy.push(item)
+        }
+      }
+    })
+    .then(res.render('index', { rest: dummy, keyword: keywords }))
+    .catch(error => console.log(error))
 })
+
+//   rest = restaurant.results.filter(item => {
+//     return item.name.toLowerCase().includes(keywords.toLowerCase())
+//   })
+//   rest = restaurant.results.filter(item => {
+//     return item.category.toLowerCase().includes(keywords.toLowerCase())
+//   })
+//   res.render('index', { rest: rest, keyword: keywords })
+// })
 
 // setting listening 
 app.listen(port, () => {

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node /Users/kuangtinghsiao/alpha_camp/restaruant_list/models/seeds/restaurantSeeds.js"
   },
   "keywords": [],
   "author": "",
