@@ -39,7 +39,8 @@
               <div class="row justify-content-end">
                 <a class='mr-2 pt-1' href="./restaurants/{{this._id}}/edit">Edit</a>
                 <a class='mr-2 pt-1' href=" ./restaurants/{{this._id}}">Detail</a>
-                <form class='mr-2' action="./restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+                <form class='mr-2' action="./restaurants/{{ this._id }}?_method=DELETE" method="POST"
+                  style="display: inline;">
                   <button type="submit" class="btn btn-primary btn-sm">Delete</button>
                 </form>
               </div>

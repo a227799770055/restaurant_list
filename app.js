@@ -4,6 +4,7 @@ const port = 3000
 const restaurant = require('./models/restaurant')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 // hadlebsrs engine
 const exphbs = require('express-handlebars')
@@ -13,6 +14,7 @@ mongoose.connect("mongodb://localhost/restaurant-list", { useNewUrlParser: true,
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 // 設定 mongodb 連線
 const db = mongoose.connection
@@ -40,7 +42,7 @@ app.get('/restaurants/:rest_id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:rest_id/delete', (req, res) => {
+app.delete('/restaurants/:rest_id', (req, res) => {
   id = req.params.rest_id
   restaurant.findById(id)
     .then(rest => rest.remove())
@@ -56,7 +58,7 @@ app.get('/restaurants/:rest_id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:rest_id/edit', (req, res) => {
+app.put('/restaurants/:rest_id', (req, res) => {
   id = req.params.rest_id
   const body = req.body
   restaurant.findById(id)
