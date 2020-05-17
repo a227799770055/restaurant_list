@@ -78,8 +78,10 @@ app.get('/search', (req, res) => {
     .lean()
     .then(rest => {
       for (item of rest) {
-        console.log(item.name)
         if (item.name.toLowerCase().includes(keywords.toLowerCase())) {
+          dummy.push(item)
+        }
+        if (item.category.toLowerCase().includes(keywords.toLowerCase())) {
           dummy.push(item)
         }
       }
@@ -87,15 +89,6 @@ app.get('/search', (req, res) => {
     .then(res.render('index', { rest: dummy, keyword: keywords }))
     .catch(error => console.log(error))
 })
-
-//   rest = restaurant.results.filter(item => {
-//     return item.name.toLowerCase().includes(keywords.toLowerCase())
-//   })
-//   rest = restaurant.results.filter(item => {
-//     return item.category.toLowerCase().includes(keywords.toLowerCase())
-//   })
-//   res.render('index', { rest: rest, keyword: keywords })
-// })
 
 // setting listening 
 app.listen(port, () => {
